@@ -1,0 +1,106 @@
+<div class="modal-dialog modal-lg" id="crear">
+    <div class="modal-content">
+    <form  method="post" action="" enctype="multipart/form-data">
+        <div="modal-header">
+            <h2 class="modal-title">Crear Artículo</h2>
+            <button class="close" type="button" data-dismiss ="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+
+        </div>
+        
+            <div class="modal-body">
+                {% csrf_token %}
+                    {% if form.errors %}
+                        {{form.errors}}
+                    {% endif %}
+                    <div class="new-image-container d-flex justify-content-center">
+                        <div class="m-2 p-2 btn-file new-image d-flex align-items-center justify-content-center">
+                            <div style="padding: 10px; border: .5px solid; border-radius: 5px; border-color: #bba4a3; color: #bba4a3 ">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                                    <path d="M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1z"/>
+                                </svg>
+                                <span class="ps-3">Subir Imagenes</span>
+                            </div>
+                            {{form.image}}
+                        </div>
+                        <div class="m-2 p-2 btn-file new-image d-flex align-items-center justify-content-center">
+                            <div style="padding: 10px; border: .5px solid; border-radius: 5px; border-color: #bba4a3; color: #bba4a3 ">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                                    <path d="M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1z"/>
+                                </svg>
+                                <span class="ps-3">Subir Imagenes</span>
+                            </div>
+                            {{form.image2}}
+                        </div>
+                        <div class="m-2 p-2 btn-file new-image d-flex align-items-center justify-content-center">
+                            <div style="padding: 10px; border: .5px solid; border-radius: 5px; border-color: #bba4a3; color: #bba4a3 ">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                                    <path d="M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1z"/>
+                                </svg>
+                                <span class="ps-3">Subir Imagenes</span>
+                            </div>
+                            {{form.image3}}
+                        </div>
+                    </div>
+                
+                    <label for="" class="form-label">Titulo</label>
+                    <input name="titulo" type="text" placeholder="E.j. Camisa Tommy" class="form-control" id="">
+
+                    <label for="" class="form-label">Sexo</label>
+                    {{form.tipo}}
+                    <datalist   id="inputGroupSelect01">
+                    <option selected>Escoja...</option>
+                    <option value="1">Mujer</option>
+                    <option value="2">Hombre</option>                      
+                    <option value="3">Niños</option>
+                    <option value="4">Unisex</option>
+                    </datalist>
+
+                    <label for="" class="form-label">Tipo de Prenda</label>
+                    {{form.clase}}
+                    <datalist  id="inputGroupSelect02">
+
+                    <option value="1">Superior</option>
+                    <option value="2">Inferior</option>                      
+                    <option value="3">Ropa Interior</option>
+                    <option value="4">Trajes de Baños</option>
+                    <option value="5">Accesorios</option>
+                    </datalist>
+                    
+                    <label for="" class="form-label">Talla</label>
+                    <select name="talla" class="form-select" id="inputGroupSelect03">
+                    <option value="XS">XS</option>
+                    <option value="S">S</option>                      
+                    <option value="M">M</option>
+                    <option value="L">L</option>
+                    <option value="XL">XL</option>
+                    <option value="XXL">XXL</option>
+                    </select>
+
+                    <label for="" class="form-label">Categoria</label>
+                    {{form.categories}}
+                
+                    <!-- {{form.titulo.label}}
+                    {{form.titulo}} -->
+                    <p class="form-label">{{form.descripcion.label}}</p>
+                    <p>{{form.descripcion}}</p>
+                    
+                    
+                    <!--<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16">
+                        <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z"/>
+                    </svg>
+                    <span><input name="precio" inputmode="numeric" type="tel" placeholder="0.00" maxlength="5" class="form-control" id=""></span>-->
+                    <p class="form-label">{{form.precio.label}}</p>
+                    {{form.precio}}
+            </div>
+            <div class="modal-footer">
+                <div class="mt-3    ">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="mx-auto w-100 btn register-btn text-register">Confirmar</button>
+                </div>
+            </div>
+    </form>    
+    </div>
+   
+</div>

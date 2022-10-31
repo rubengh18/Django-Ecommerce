@@ -1,0 +1,35 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block content %}
+<div id="empuje">
+<section id="home-articles ">
+    <div class="container" id="articles1" >
+        <br>
+        <h1 id="section-title">Mujeres</h1>
+        <div class="row mx-auto">
+            <!-- aqui empiezan los articulos -->
+            {% if mujeres %}
+            {% for article in mujeres %}
+            <div class="d-flex p-3 col-xxl-3 col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6 a">
+                <div >
+                    {% if article.image != null and article.image.url %}
+                    <a href="{% url 'article' article.id %}"><img src="{{article.image.url|cut:"export=download"}}" class="img-article2" alt="..."></a>
+                    {% else %}
+                    <a href="{% url 'article' article.id %}"><img src="static/img/article-test.jpg" class="img-article2" alt="..."></a>
+                    {% endif %}
+                    <span id="titulo1"><a id="titulo1" href="{% url 'article' article.id %}">{{article.titulo|truncatechars:18}}</a></span>
+                    <p id="precio">${{article.precio|floatformat:2}}</p>
+                </div>
+            </div>
+           {% endfor %}
+           {% else %}
+           <p class="ps-2 d-inline dato-text">No hay artículos</p> 
+           {% endif %}
+        </div>
+        <br>   
+    </div>
+    
+</section>
+</div>
+{% endblock content %}

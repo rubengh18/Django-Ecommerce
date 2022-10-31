@@ -1,0 +1,82 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block content %}
+
+
+
+<div class="register">
+    <img id="frog-login" src="../static/img/frog-login.png" alt="">
+    
+    <!--Contenedor del registro-->
+    <div class="register-container">
+        <h1 class="text-register">Registrarse</h1>
+        {% if form.errors %}
+            <strong class="Error">
+                Hay errores en el formulario
+            </strong>
+        {% endif %}
+        <form method="post" action="">
+            <div>
+            
+                {% csrf_token %}
+                
+                <label for="firstname" class="form-label text-register">Nombre de usuario</label>
+                {{register_form.username}}
+
+                <!--Nombre-->
+                <label for="firstname" class="form-label text-register">Nombre</label>
+                {{register_form.nombres}}
+                <!--Apellido-->
+                <label for="firstname" class="form-label text-register">Apellido</label>
+                {{register_form.apellidos}}
+                <!--Provincia-->
+                <label for="exampleDataList" class="form-label text-register">Provincia</label>
+                <select name="provincia" class="form-select" id="datalistOptions">
+                    <option value="Bocas del Toro">Bocas del Toro</option>
+                    <option value="Coclé">Coclé</option>
+                    <option value="Colon">Colón</option>
+                    <option value="Chiriqui">Chiriquí</option>
+                    <option value="Darién">Darién</option>
+                    <option value="Herrera">Herrera</option>
+                    <option value="Los Santos">Los Santos</option>
+                    <option value="Panamá">Panamá</option>
+                    <option value="Veraguas">Veraguas</option>
+                    <option value="Panamá Oeste">Panamá Oeste</option>
+                </select>
+                <!--Telefono-->
+                <label for="phone" class="text-register">Número de Celular</label>
+                {{register_form.phone_number}}
+                <!--<input type="tel" id="phone" class="form-control" name="phone" placeholder="1234-5678" pattern="[0-9]{4}-[0-9]{4}" required value="+507 ">-->
+                <!--E-mail-->
+                <label for="FormControlEmail2" class="form-label text-register">E-mail</label>
+                {{register_form.email}}
+                <!--Contrasena-->
+                <label for="inputPassword1" class="text-register">Contraseña</label>
+                {{register_form.password1}}
+                <!--Confirmacion de la contrasena-->
+                <label for="inputPassword2" class="text-register">Confirmar Contraseña</label>
+                {{register_form.password2}}
+            
+            </div>
+            <div style="margin-top: 32px;">
+                <span class="alternative-text">Al crear tu cuenta, aceptas nuestros</span><a href="{% url 'terminos' %}" target="_blank" class="alternative-text"> Términos y Condiciones y Políticas de Privacidad</a>
+                <hr style="visibility: hidden;">
+                <input type="submit" class="btn register-btn text-register" value="Regístrate"/>
+
+            </div>
+        </form>
+    </div>
+    
+</div>
+<script>
+    swal({
+        title: "Atención!",
+        text: "Esta es un versión BETA de la plataforma, por lo que es posible que algunas características no funcionen del todo bien. Si tienes algún inconveniente puedes pedir ayuda mediante nuestra página de instagram @dekchepty.",
+        icon: "warning",
+        timer: "7000",
+        button: "Ofi!",
+    });</script>
+
+
+{% endblock content %}
+

@@ -1,0 +1,135 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.3.6,
+* Autoprefixer: v10.3.1
+* Browsers: last 4 version
+*/
+
+/*Paleta de colores*/
+/*
+naranja pastel:     #b47545
+Rosado:             #e7d0ca
+Verde:              #767965
+Rojo pastel:        #a45350
+Rosadito Clarito:   #FFF4F1
+*/
+/*Parametros generales del footer*/
+footer{
+    width: 100%;
+    background-color: #a45350;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    -webkit-box-shadow: 0px 0px 20px grey;
+            box-shadow: 0px 0px 20px grey;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+}
+/*Date & Social icons rigth*/  
+  #sideBar {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient:vertical;
+    -webkit-box-direction:normal;
+        -ms-flex-direction:column;
+            flex-direction:column;
+    width: 250px;
+    
+}
+
+/*section of social icons*/
+.social-icons{
+    color: #FFF4F1 ;
+    padding-top: 15px;
+}
+
+/*social icons*/
+#social-footer{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 180px;  
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+             justify-content: space-evenly;
+    color: #FFF4F1 ;
+}
+
+/*left content like a menu*/
+  #content { 
+    width: 50%;
+    -webkit-box-flex: 1;
+        -ms-flex: 1 0 auto;
+            flex: 1 0 auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    /* habilitar crecer , deshabilitar encoger */
+  }
+
+  /*style of text*/
+.footer-text{    
+    margin: 10px;
+    text-decoration: none;
+    color: #FFF4F1;
+    font-family: 'Cabin', sans-serif;
+    font-size: 16px;
+    -webkit-transition: 500ms;
+    -o-transition: 500ms;
+    transition: 500ms;
+}
+
+/*estilos del logo del footer*/
+#footer-logo{
+    font-family: 'Pattaya', sans-serif;
+    font-size: 54px;
+}
+
+/*hover of the logo*/
+.footer-text:hover{
+    color: #767965;
+    cursor: pointer;
+    
+}
+
+
+
+
+@media screen and (max-width: 1024px){
+    /*footer responsive*/
+    footer{
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
+    }
+    /*fix date*/
+    #sideBar{
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
+        
+    }
+    #content{
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
+

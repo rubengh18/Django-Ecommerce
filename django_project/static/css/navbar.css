@@ -1,0 +1,243 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.3.6,
+* Autoprefixer: v10.3.1
+* Browsers: last 4 version
+*/
+
+
+/*Paleta de colores*/
+/*
+naranja pastel:     #b47545
+Rosado:             #e7d0ca
+Verde:              #767965
+Rojo pastel:        #a45350
+Rosadito Clarito:   #FFF4F1
+Body:               #F3ECEC
+*/
+/*parametros iniciales*/
+body{
+    background-color: white;
+}
+
+
+
+* {
+    margin:  0;
+    padding: 0;
+}
+
+
+/*Navbar fixed Esto es para que siempre este a la derecha*/
+#sesion, #sesion2{
+    margin-left: auto;
+}
+
+/*Parametros del navbar*/
+.bg-navbar{
+    background-color: white;
+    border-bottom: 0.2px solid;
+    border-color: #c4c4c4;
+    /* box-shadow: 1px 1px 8px rgba(128, 128, 128, 0.144); */
+} 
+.navbar{
+    padding-top: 0%;
+    padding-bottom: 0%;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+}
+/*Botones*/
+#primarycolor-button-id{
+    margin:0px!important;
+}
+
+.primarycolor-button{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+    background-color:white;
+    color: #444;
+    border-color: #c4c4c4;
+    -webkit-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    margin: auto;
+    font-weight: bold;
+}
+
+.primarycolor-button:hover{
+    background-color: #a45350;
+    border-color: #a45350; 
+    
+}
+
+#primarycolor-button-id:hover{
+    margin: 0;
+    padding: .3em .5em .3em .5em;
+    font-size: 20px;
+    -webkit-font-smoothing: antialiased;
+}
+
+.secondarycolor-button{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 20px;
+    color: #444;
+    text-decoration: none;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+    border: 0px solid;
+    -webkit-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#dfd0cf), to(#dfd0cf));
+    background-image: -o-linear-gradient(#dfd0cf, #dfd0cf);
+    background-image: linear-gradient(#dfd0cf, #dfd0cf);
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+    background-size: 0% 2px;
+    -webkit-transition: background-size .3s;
+    -o-transition: background-size .3s;
+    transition: background-size .3s;
+}
+
+.secondarycolor-button:hover{
+   background-size: 100% 5px;
+   color: #a45350;
+}
+
+#login1{
+    border-radius: 0px !important;
+}
+
+#login1:hover{
+    color: #a45350!important;
+}
+
+.bg-search{
+    background-color: white;
+    border-color: #c4c4c4;
+    border-top-right-radius: 0!important;
+    border-bottom-right-radius: 0!important;
+    margin-right: 0!important;
+}
+
+#search-btn{
+    border-top-left-radius: 0!important;
+    border-bottom-left-radius: 0!important;
+    margin: 0;
+}
+/*logo*/
+.logo{
+    text-decoration: none;
+    font-family: 'Pattaya', sans-serif;
+    font-size: 54px;
+    color: #a45350;
+    padding-right: 20px;
+}
+
+/*Categories section*/
+.bg-categories{
+    background-color: whites;
+    padding: 5px;
+    
+}
+
+.padding-nav{
+    width: 80%;
+    margin: 0 auto;
+}
+
+.text-categories{
+    text-decoration: none;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 18px;
+    
+    color:#686868;
+    padding-right: inherit;
+}
+
+/*Margen entre navbar y body*/
+.nav-scroller{
+    -webkit-box-shadow: 2px 2px 8px rgba(128, 128, 128, 0.144);
+            box-shadow: 2px 2px 8px rgba(128, 128, 128, 0.144);
+    margin: 0!important;
+    border-bottom: 0.2px solid;
+    border-color: #e7e7e7;
+    
+}
+
+/*Boton de publicar*/
+.publicar-btn{
+    height: 55px;
+    width: 55px;
+    background-color: #a45350;
+    border-radius: 50%;
+    position: fixed;
+    bottom: 30px;
+    right: 70px;
+    z-index: 9999;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+    -webkit-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+.publicar-btn > svg{
+    color: #dfd0cf;
+}
+.publicar-btn:hover > svg{
+    color: #fffaf9;
+}
+
+.publicar-btn:hover{
+    margin-bottom: 10px;
+}
+
+/*responsive*/
+@media screen and (max-width: 1024px){
+    .responsive-nav{
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: reverse;
+            -ms-flex-direction: column-reverse;
+                flex-direction: column-reverse;
+        -webkit-box-align: end;
+            -ms-flex-align: end;
+                align-items: flex-end;
+        padding-bottom: 10px;
+    }
+
+    .responsive-nav-2{
+        margin: 5px;
+        width: 100%;
+        -webkit-box-pack: end;
+            -ms-flex-pack: end;
+                justify-content: flex-end;
+    }
+
+    #sesion2{
+        padding-bottom: 10px;
+    }
+
+    .bg-categories > nav{
+        -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+                justify-content: space-between;
+        padding: 5px 20px;
+    }
+
+    .bg-categories > nav > a{
+        margin: 0px!important; 
+        padding: 0px;   
+    }
+
+    .publicar-btn{
+        right: 10px;
+    }
+}
+
+

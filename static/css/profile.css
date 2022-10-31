@@ -1,0 +1,235 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.3.6,
+* Autoprefixer: v10.3.1
+* Browsers: last 4 version
+*/
+
+/* ESTE CSS CONTENDRA TODO LO QUE TENGA QUE VER CON LA INTERACCION DIRECTA DEL 
+USUARIO CON LA PLATAFORMA */
+
+/* SECCION DE PERFIL */
+
+
+.profile-box, .dato-box, .closet-box{
+  background-color: white;
+  
+  -webkit-box-shadow: 4px 4px 8px rgba(197, 189, 189, 0.5);  
+          box-shadow: 4px 4px 8px rgba(197, 189, 189, 0.5);;
+}
+
+.profile-box{
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 150px;
+          flex: 1 1 150px;
+  color: #a1a1a1;
+}
+
+.dato-box{
+  font-family: 'Open Sans', sans-serif;
+  -webkit-box-flex: 4;
+      -ms-flex: 4 0 auto;
+          flex: 4 0 auto;
+  padding-bottom: 15px;
+}
+.profile-title-text{
+  margin-top: 20px;
+  color: #a45350;
+  font-family:'Pattaya', sans-serif;
+  
+  font-size: 3.5rem;
+  
+}
+.profile-dato-text{
+  color: #616161;
+  font-family:'Open Sans', sans-serif;
+  font-weight: bold;
+  
+}
+.dato-text{
+  font-family:'Open Sans', sans-serif;
+  color: #616161;
+  font-size: 1.2em;
+}
+
+.edit-icon{
+  color: #a45350;
+  cursor: pointer;
+}
+.text-edit{
+  color: #a45350;
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.5em;
+  cursor: pointer;
+}
+
+.text-edit-form{
+  color: #bba4a3;
+  font-family: 'Cabin', sans-serif;
+}
+
+.ver-todo{
+  color: #a45350;
+  font-family: 'Cabin', sans-serif;
+  font-size: 1.3em;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 1024px) {
+  .profile-container{
+    height:auto;
+    max-height:auto;
+    
+  }
+}  
+
+/* SECCION DE AGREGAR ARTICULOS */
+.new-article{
+  width: 90%;
+  border: 1px solid #c4c4c4;
+  -webkit-box-shadow: 4px 4px 8px rgba(197, 189, 189, 0.5);
+          box-shadow: 4px 4px 8px rgba(197, 189, 189, 0.5);
+  background-color: white;
+}
+
+.new-article > form{
+  width: 70%;
+
+
+}
+.new-image{
+  background-color: white;
+  height: 200px;
+  border-radius: 15px;
+  border: .5px solid;
+  border-color: #c4c4c4;
+  width: 100%;
+}
+
+
+@supports((-o-object-fit: cover) or (object-fit: cover)){
+  .new-image > img{
+    height: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+    -o-object-position: center center;
+       object-position: center center;
+    position: relative;
+    z-index:9999;
+  }
+} 
+@media (min-width: 320px) and (max-width: 480px) {
+  .new-image-container{
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    height: 300px;
+  }
+}
+/* esta fragcion de codigo esconde le boton feo de subir archivos */
+.btn-file {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+.btn-file input[type=file] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  font-size: 100px;
+  text-align: right;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  outline: none;
+  background: white;
+  cursor: inherit;
+  display: block;
+}
+
+.form-label{
+  color: #444;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.2em;
+}
+
+.upimage{
+ max-width: 100%;
+ height:auto
+
+}
+
+
+@media screen and (max-width: 1024px) {
+  .new-article{
+    width: 100%;
+  }
+
+  .new-article > form{
+    width: 90%;
+  }
+
+  .new-image{
+    height: 200px;
+  }
+
+  #editp{
+    width: 80%;
+    display: inline;
+  }
+}
+/*Editar perfil*/
+.file-btn{
+  background-color: #a45350;
+  color: #fffaf9;
+  font-family: 'Cabin', sans-serif;
+}
+
+.file-btn:hover{
+  background-color: #767965;
+  color: #fffaf9;
+}
+
+@media screen and (min-width: 1024px) {
+  #editp{
+    width: 400px!important;
+    margin-left: 10px!important;
+    display: inline!important;
+  }
+}
+
+#contenedor_carga{
+	background-color: #e7d0ca;
+  opacity: 0.5;
+	height: 100vh;
+	width: 100vw;
+	position: absolute;
+	-webkit-transition: all  1s ease;
+	-o-transition: all  1s ease;
+	transition: all  1s ease;
+	z-index: 10000;
+}
+#carga{
+	border: 15px solid #fffaf9;
+	border-top-color: #e7d0ca;
+	border-top-style: groove;
+	height: 100px;
+	width:  100px;
+	border-radius: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	-webkit-animation: girar 1.5s linear infinite;
+	-o-animation: girar 1.5s linear infinite;
+	animation: girar 1.5s linear infinite;
+}
+@keyframes girar{
+	from{transform: rotate(0deg);}
+	to {transform: rotate(360deg);}
+}

@@ -1,0 +1,302 @@
+{% load static %}
+<!-- <div class="row articles container mx-auto">
+
+    <div class="col-lg-2 col-md-4 col-sm-6 article">
+        <div class="article-img">
+            <img src="static/img/article-test.jpg" alt="">
+        </div>
+        <div class="article-info">
+            <h3 class="article-name"></h3>
+            <p class="description-article"></p>
+            <div class="article-info-bottom">
+                <h4 class="article-price">$2.40</h4>
+                <div class="icon-container">
+                    <svg class="favorite-icon" xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+                        <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+                    </svg>-->
+                <!-- <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                </svg> -->
+               <!-- </div>
+            </div>    
+        </div>    
+    </div>
+
+</div> -->
+
+<!-- Seccion de articulos -->
+<section class="container mx-auto">
+    <div class="container d-flex justify-content-between mt-5 text-header-articles">
+    <h3>Publicaciones Recientes</h3>
+    <a href="{% url 'articles' %}"><h5>Ver más</h5></a>
+    </div>
+    <!-- aqui empieza la grilla -->
+    <div class="row mx-auto">
+        <!-- aqui empiezan los articulos -->
+        {% for article in articles %}
+        <div class="d-flex p-3 col-xxl-3 col-xl-3 col-lg-3 col-md-3 col-sm-2 col-2 a">
+            <div class="card"> 
+                {% if article.image != null and article.image.url %}
+                <img src="{{article.image.url|cut:"export=download"}}" class="img-article" alt="...">
+                {% else %}
+                <img src="static/img/article-test.jpg" class="img-article" alt="...">
+                {% endif %}
+                <div class="card-body">
+                <h4 class="card-title" id="article-title"><a href="{% url 'article' article.id %}">{{article.titulo|truncatechars_html:28}}</a></h4>
+                <h6 class="card-text" id="username">@{{article.user.username}}</h6>
+                <h6 class="card-text" id="size">{{article.talla}}</h6>
+                </div>
+                <div class="article-info-bottom">
+                    <h4 class="article-price" id="article-price">${{article.precio|floatformat:2}}</h4>
+                    <!--
+                    <form action="{% url 'dar_like'   %}" method="GET" class"like-form" id="{{article.id}}">
+                        {% csrf_token %}
+                        <h5 class="like-count{{article.id}}" >{{article.num_likes}}</h5>
+                        <div class="icon-container">
+                            <input type="hidden" name="article_id"  value="{{article.id}}"/>
+                            <button type="submit" class="ui button like-btn{{article.id}}">
+                                {% if request.user in article.liked.all %}
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-heart-fill favorite-icon" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                                    </svg>
+                                {% else %}
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-heart favorite-icon" viewBox="0 0 16 16">
+                                        <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+                                    </svg>
+                                {% endif %}
+                            </button>
+                        </div> 
+                    </form>   
+                    -->    
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        
+    </div>  
+    
+    <div class="container d-flex justify-content-between mt-5 text-header-articles">
+        <h3>Mujeres</h3>
+        <a href="{% url 'mujeres' %}"><h5>Ver más</h5></a>
+        </div>
+        <!-- aqui empieza la grilla -->
+        <div class="row mx-auto">
+            <!-- aqui empiezan los articulos -->
+            {% if mujer %}
+            {% for mj in mujer %}
+            <div class="d-flex p-3 col-xxl-2 col-xl-2 col-lg-3 col-md-4 col-sm-6 col-6 a">
+                <div class="card"> 
+                    {% if mj.image != null and mj.image.url %}
+                    <img src="{{mj.image.url|cut:"export=download"}}" class="img-article" alt="...">
+                    {% else %}
+                    <img src="static/img/article-test.jpg" class="img-article" alt="...">
+                    {% endif %}
+                    <div class="card-body">
+                    <h4 class="card-title" id="article-title"><a href="{% url 'article' mj.id %}">{{mj.titulo|truncatechars_html:28}}</a></h4>
+                    <h6 class="card-text" id="username">@{{mj.user.username}}</h6>
+                    <h6 class="card-text" id="size">{{mj.talla}}</h6>
+                    </div>
+                    <div class="article-info-bottom">
+                        <h4 class="article-price" id="article-price">${{mj.precio|floatformat:2}}</h4>
+                        <!--
+                        <form action="{% url 'dar_like'   %}" method="GET" class"like-form" id="{{article.id}}">
+                            {% csrf_token %}
+                            <h5 class="like-count{{article.id}}" >{{article.num_likes}}</h5>
+                            <div class="icon-container">
+                                <input type="hidden" name="article_id"  value="{{article.id}}"/>
+                                <button type="submit" class="ui button like-btn{{article.id}}">
+                                    {% if request.user in article.liked.all %}
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-heart-fill favorite-icon" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                                        </svg>
+                                    {% else %}
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-heart favorite-icon" viewBox="0 0 16 16">
+                                            <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+                                        </svg>
+                                    {% endif %}
+                                </button>
+                            </div> 
+                        </form>   
+                        -->    
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            {% else %}
+            <p class="ps-2 d-inline dato-text">No hay artículos</p> 
+            {% endif %}
+            
+        </div>
+        
+        <div class="container d-flex justify-content-between mt-5 text-header-articles">
+            <h3>Hombres</h3>
+            <a href="{% url 'hombres' %}"><h5>Ver más</h5></a>
+            </div>
+            <!-- aqui empieza la grilla -->
+            
+            <div class="row mx-auto">
+                <!-- aqui empiezan los articulos -->
+                {% if hombre %}
+                {% for hb in hombre %}
+                <div class="d-flex p-3 col-xxl-2 col-xl-2 col-lg-3 col-md-4 col-sm-6 col-6 a">
+                    <div class="card"> 
+                        {% if hb.image != null and hb.image.url %}
+                        <img src="{{hb.image.url|cut:"export=download"}}" class="img-article" alt="...">
+                        {% else %}
+                        <img src="static/img/article-test.jpg" class="img-article" alt="...">
+                        {% endif %}
+                        <div class="card-body">
+                        <h4 class="card-title" id="article-title"><a href="{% url 'article' hb.id %}">{{hb.titulo|truncatechars_html:28}}</a></h4>
+                        <h6 class="card-text" id="username">@{{hb.user.username}}</h6>
+                        <h6 class="card-text" id="size">{{hb.talla}}</h6>
+                        </div>
+                        <div class="article-info-bottom">
+                            <h4 class="article-price" id="article-price">${{hb.precio|floatformat:2}}</h4>
+                            <!--
+                            <form action="{% url 'dar_like'   %}" method="GET" class"like-form" id="{{article.id}}">
+                                {% csrf_token %}
+                                <h5 class="like-count{{article.id}}" >{{article.num_likes}}</h5>
+                                <div class="icon-container">
+                                    <input type="hidden" name="article_id"  value="{{article.id}}"/>
+                                    <button type="submit" class="ui button like-btn{{article.id}}">
+                                        {% if request.user in article.liked.all %}
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-heart-fill favorite-icon" viewBox="0 0 16 16">
+                                                <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                                            </svg>
+                                        {% else %}
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-heart favorite-icon" viewBox="0 0 16 16">
+                                                <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+                                            </svg>
+                                        {% endif %}
+                                    </button>
+                                </div> 
+                            </form>   
+                            -->    
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                {% else %}
+            <p class="ps-2 d-inline dato-text">No hay artículos</p> 
+            {% endif %}
+                
+            </div>
+           
+            <div class="container d-flex justify-content-between mt-5 text-header-articles">
+                <h3>Niños</h3>
+                <a href="{% url 'niños' %}"><h5>Ver más</h5></a>
+                </div>
+                <!-- aqui empieza la grilla -->
+                <div class="row mx-auto">
+                    <!-- aqui empiezan los articulos -->
+                    {% if niños %}
+                    {% for ni in niños %}
+                    <div class="d-flex p-3 col-xxl-2 col-xl-2 col-lg-3 col-md-4 col-sm-6 col-6 a">
+                        <div class="card"> 
+                            {% if ni.image != null and ni.image.url %}
+                            <img src="{{ni.image.url|cut:"export=download"}}" class="img-article" alt="...">
+                            {% else %}
+                            <img src="static/img/article-test.jpg" class="img-article" alt="...">
+                            {% endif %}
+                            <div class="card-body">
+                            <h4 class="card-title" id="article-title"><a href="{% url 'article' ni.id %}">{{ni.titulo|truncatechars_html:28}}</a></h4>
+                            <h6 class="card-text" id="username">@{{ni.user.username}}</h6>
+                            <h6 class="card-text" id="size">{{ni.talla}}</h6>
+                            </div>
+                            <div class="article-info-bottom">
+                                <h4 class="article-price" id="article-price">${{ni.precio|floatformat:2}}</h4>
+                                <!--
+                                <form action="{% url 'dar_like'   %}" method="GET" class"like-form" id="{{article.id}}">
+                                    {% csrf_token %}
+                                    <h5 class="like-count{{article.id}}" >{{article.num_likes}}</h5>
+                                    <div class="icon-container">
+                                        <input type="hidden" name="article_id"  value="{{article.id}}"/>
+                                        <button type="submit" class="ui button like-btn{{article.id}}">
+                                            {% if request.user in article.liked.all %}
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-heart-fill favorite-icon" viewBox="0 0 16 16">
+                                                    <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                                                </svg>
+                                            {% else %}
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-heart favorite-icon" viewBox="0 0 16 16">
+                                                    <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+                                                </svg>
+                                            {% endif %}
+                                        </button>
+                                    </div> 
+                                </form>   
+                                -->    
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    {% else %}
+                    <p class="ps-2 d-inline dato-text">No hay artículos</p> 
+                    {% endif %}
+                    
+                </div>
+
+                <div class="container d-flex justify-content-between mt-5 text-header-articles">
+                    <h3>Unisex</h3>
+                    <a href="{% url 'unisex' %}"><h5>Ver más</h5></a>
+                    </div>
+                    <!-- aqui empieza la grilla -->
+                    <div class="row mx-auto">
+                        <!-- aqui empiezan los articulos -->
+                        {% if unisex %}
+                        {% for uni in unisex %}
+                        <div class="d-flex p-3 col-xxl-2 col-xl-2 col-lg-3 col-md-4 col-sm-6 col-6 a">
+                            <div class="card"> 
+                                {% if uni.image != null and uni.image.url %}
+                                <img src="{{uni.image.url|cut:"export=download"}}" class="img-article" alt="...">
+                                {% else %}
+                                <img src="static/img/article-test.jpg" class="img-article" alt="...">
+                                {% endif %}
+                                <div class="card-body">
+                                <h4 class="card-title" id="article-title"><a href="{% url 'article' uni.id %}">{{uni.titulo|truncatechars_html:28}}</a></h4>
+                                <h6 class="card-text" id="username">@{{uni.user.username}}</h6>
+                                <h6 class="card-text" id="size">{{uni.talla}}</h6>
+                                </div>
+                                <div class="article-info-bottom">
+                                    <h4 class="article-price" id="article-price">${{uni.precio|floatformat:2}}</h4>
+                                    <!--
+                                    <form action="{% url 'dar_like'   %}" method="GET" class"like-form" id="{{article.id}}">
+                                        {% csrf_token %}
+                                        <h5 class="like-count{{article.id}}" >{{article.num_likes}}</h5>
+                                        <div class="icon-container">
+                                            <input type="hidden" name="article_id"  value="{{article.id}}"/>
+                                            <button type="submit" class="ui button like-btn{{article.id}}">
+                                                {% if request.user in article.liked.all %}
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-heart-fill favorite-icon" viewBox="0 0 16 16">
+                                                        <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                                                    </svg>
+                                                {% else %}
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-heart favorite-icon" viewBox="0 0 16 16">
+                                                        <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+                                                    </svg>
+                                                {% endif %}
+                                            </button>
+                                        </div> 
+                                    </form>   
+                                    -->    
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        {% else %}
+                        <p class="ps-2 d-inline dato-text">No hay artículos</p> 
+                        {% endif %}
+                        
+                    </div>
+
+                    <div class="mt-3 mb-3 p-5 container ig-call">
+                        <h3>Síguenos en instagram</h3>
+                        <div class="d-flex align-items-center justify-content-between">
+                            <h1>@Dekchepty</h1>
+                            <p>Puedes ver todas las novedades y compartir tu experiencia con nosotros!</p>
+                            <a href="https://www.instagram.com/dekchepty" target="_blank">
+                                <button type="button" class="btn btn-primary me-3 primarycolor-button" id="primarycolor-button-id">Síguenos!</button>
+                            </a>
+                        </div>
+
+                    </div>
+</section>

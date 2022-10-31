@@ -1,0 +1,38 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="mt-4 container" id="empuje">
+    
+    <h1 class="article-title">Nueva contraseña</h2>
+    <form action="" method="post">
+        {% if form.errors %}
+            {{form.errors}}
+        {% endif %}
+        {% csrf_token %}
+        <div class="dato-text">{{form.as_p}}</div>
+        <input type="submit" class=" btn register-btn text-register" value="Cambiar"/>
+        
+    </form>
+    <script type="application/javascript">
+            $(function () {
+                $('form').on('submit', function (e) {
+                    e.preventDefault();
+                    var parameters = new FormData(this);
+                    submit_with_ajax(window.location.pathname, 'Notificación', '¿Estas seguro de cambiar tu contraseña?', parameters, function () {
+                        Swal.fire({
+                            title: 'Notificación',
+                            text: 'Tu contraseña ha sido cambiada correctamente',
+                            icon: 'success',
+                            timer: 7000,
+                            onClose: () => {
+                                location.href = '/accounts/login';
+                            }
+                        }).then((result) => {
+
+                        });
+                    });
+                });
+            });
+    </script>
+</div>
+{% endblock content %}

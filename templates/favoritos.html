@@ -1,0 +1,38 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container" id="empuje">
+        <div class="row mx-auto">
+        <h3 class="mt-4 profile-title-text">Favoritos</h3>
+            <!-- aqui empiezan los articulos -->
+            {% if fav %}
+            {% for mj in fav %}
+                {% if mj.value == "Like" and request.user == mj.user %}
+                <div class="d-flex p-3 col-xxl-2 col-xl-2 col-lg-3 col-md-4 col-sm-6 col-6">
+                    <div class="card"> 
+                        {% if mj.post.image != null and mj.post.image.url %}
+                        <img src="{{mj.post.image.url|cut:"export=download"}}" class="img-article" alt="...">
+                        {% else %}
+                        <img src="static/img/article-test.jpg" class="img-article" alt="...">
+                        {% endif %}
+                        <div class="card-body">
+                        <h4 class="card-title" id="article-title"><a href="{% url 'article' mj.post.id %}">{{mj.post.titulo|truncatechars:18}}</a></h4>
+                        <h6 class="card-text" id="username">@{{mj.user.username}}</h6>
+                        <h6 class="card-text" id="size">{{mj.post.talla}}</h6>
+                        </div>
+                        <div class="article-info-bottom">
+                            <h4 class="article-price" id="article-price">${{mj.post.precio|floatformat:2}}</h4>
+                        </div>
+                    </div>
+                </div>
+               {% endif %}
+            {% endfor %}
+            {% else %}
+                <p class="mt-5 ps-2 d-inline dato-text">No hay artículos</p> 
+            {% endif %}
+            
+    </div>
+
+</div>
+{% endblock content %}

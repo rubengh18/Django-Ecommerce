@@ -1,0 +1,133 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block content %}
+
+<section class="p-3" id="empuje">
+    <div class="new-article p-xxl-3 p-xl-3 p-lg-3 mx-auto d-flex flex-column justify-content-center">
+            {% if form.errors %}
+                    {{form.errors}}
+                {% endif %}
+            <form class="mx-auto p-3" method="post" action="{% url 'actualizar' article.id %}" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="new-image-container d-flex justify-content-center">
+                <div class="m-2 btn-file new-image d-flex flex-column align-items-center justify-content-center">
+                  <div>  
+                    <img id="imagenPrevisualizacion" src="{{article.image.url|cut:"export=download"}}" style="max-width: 100%;"/>
+                  </div>
+                  {{form.image}}
+                </div>
+                <div class="m-2 btn-file new-image d-flex flex-column align-items-center justify-content-center">
+                  <div>
+                      <img id="imagenPrevisualizacion2" src="{{article.image2.url|cut:"export=download"}}" style="max-width: 100%;"/>
+                  </div>
+                  {{form.image2}}  
+                  </div>
+                <div class="m-2 btn-file new-image d-flex flex-column align-items-center justify-content-center">
+                  <div>
+                      <img id="imagenPrevisualizacion3" src="{{article.image3.url|cut:"export=download"}}" style="max-width: 100%;"/>
+                  </div>
+                  {{form.image3}}
+                </div>
+              </div>
+              <h4 class="text-edit-form" style="text-align:center; margin: 5px;">Selecciona la imagen que deseas cambiar</h4>
+                <h4 class="form-label">{{form.titulo.label}}</h4>
+                {{form.titulo}}
+                <h4 class="form-label">{{form.descripcion.label}}</h4>
+                {{form.descripcion}}
+                <h4 class="form-label">{{form.categories.label}}</h4>
+                {{form.categories}}
+                <h4 class="form-label">{{form.talla.label}}</h4>
+                {{form.talla}}
+                <h4 class="form-label">{{form.precio.label}}</h4>
+                {{form.precio}}
+                <label for="" class="form-label">Sexo</label>
+                <h4 class="text-edit-form">{{form.tipo}}</h4>
+                <label for="" class="form-label">Tipo de Prenda</label>
+                <h4 class="text-edit-form">{{form.clase}}</h4>
+                <div class="mt-3">
+                    <button type="submit" class="mx-auto w-100 btn register-btn text-register" >Actualizar</button>
+                    
+                </div>
+               
+                <a class="mx-auto w-100 btn register-btn text-register" href="{% url 'eliminar' article.id %}" style="border-radius: 10px;">Eliminar</a>
+                <a class="mx-auto w-100 btn register-btn text-register"href="javascript: history.go(-1)" style="border-radius: 10px;">Volver</a>
+                
+            </form>
+       
+    </div>
+</section>
+<script type="text/javascript">
+   // Obtener referencia al input y a la imagen
+
+const $id_image = document.querySelector("#id_image"),
+  $imagenPrevisualizacion = document.querySelector("#imagenPrevisualizacion");
+
+// Escuchar cuando cambie
+$id_image.addEventListener("change", () => {
+  // Los archivos seleccionados, pueden ser muchos o uno
+  const archivos = $id_image.files;
+  // Si no hay archivos salimos de la función y quitamos la imagen
+  if (!archivos || !archivos.length) {
+    $imagenPrevisualizacion.src = "";
+    return;
+  }
+  // Ahora tomamos el primer archivo, el cual vamos a previsualizar
+  const primerArchivo = archivos[0];
+  // Lo convertimos a un objeto de tipo objectURL
+  const objectURL = URL.createObjectURL(primerArchivo);
+  // Y a la fuente de la imagen le ponemos el objectURL
+  $imagenPrevisualizacion.src = objectURL;
+});
+
+
+
+</script>
+
+<script type="text/javascript">
+const $id_image2 = document.querySelector("#id_image2"),
+  $imagenPrevisualizacion2 = document.querySelector("#imagenPrevisualizacion2");
+
+// Escuchar cuando cambie
+$id_image2.addEventListener("change", () => {
+  // Los archivos seleccionados, pueden ser muchos o uno
+  const archivos = $id_image2.files;
+  // Si no hay archivos salimos de la función y quitamos la imagen
+  if (!archivos || !archivos.length) {
+    $imagenPrevisualizacion2.src = "";
+    return;
+  }
+  // Ahora tomamos el primer archivo, el cual vamos a previsualizar
+  const primerArchivo = archivos[0];
+  // Lo convertimos a un objeto de tipo objectURL
+  const objectURL = URL.createObjectURL(primerArchivo);
+  // Y a la fuente de la imagen le ponemos el objectURL
+  $imagenPrevisualizacion2.src = objectURL;
+});
+</script>
+
+
+</script>
+
+<script type="text/javascript">
+const $id_image3 = document.querySelector("#id_image3"),
+  $imagenPrevisualizacion3 = document.querySelector("#imagenPrevisualizacion3");
+
+// Escuchar cuando cambie
+$id_image3.addEventListener("change", () => {
+  // Los archivos seleccionados, pueden ser muchos o uno
+  const archivos = $id_image3.files;
+  // Si no hay archivos salimos de la función y quitamos la imagen
+  if (!archivos || !archivos.length) {
+    $imagenPrevisualizacion3.src = "";
+    return;
+  }
+  // Ahora tomamos el primer archivo, el cual vamos a previsualizar
+  const primerArchivo = archivos[0];
+  // Lo convertimos a un objeto de tipo objectURL
+  const objectURL = URL.createObjectURL(primerArchivo);
+  // Y a la fuente de la imagen le ponemos el objectURL
+  $imagenPrevisualizacion3.src = objectURL;
+});
+</script>
+{% endblock content %}

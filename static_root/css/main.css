@@ -1,0 +1,36 @@
+/*Paleta de colores*/
+/*
+naranja pastel:     #b47545
+Rosado:             #e7d0ca
+Verde:              #767965
+Rojo pastel:        #a45350
+Rosadito Clarito:   #FFF4F1
+*/
+
+.carousel-id{
+    height: 36rem;
+    background: #777;
+    color: white;
+}
+
+.carousel-item{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    position: relative;
+    
+}
+
+@media screen and (max-width: 1024px) {
+    .carousel-id{
+        height: 300px;
+		min-height: 300px;
+    }
+    .carousel-item{
+        background-size: cover;
+    }
+    
+}

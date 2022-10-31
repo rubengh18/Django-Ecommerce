@@ -1,0 +1,199 @@
+{% load static %}
+{% load bootstrap5 %}
+
+{% bootstrap_css %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Marketplace de ropa de segunda mano. Dale una segunda oportunidad a eso que ya no usas \">
+    <meta name="keywords" content="ropa, segunda mano, marketplace">
+    <title>DEKCHE: Las mejores prendas al alcance de un click!</title>
+    <link rel="shortcut icon" href="../static/img/favicon.ico">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Chettan+2&family=Pattaya&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600&family=Oswald:wght@200;400;500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600&family=Oswald:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/navbar.css' %}"> 
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/footer.css' %}"> 
+    <link rel="stylesheet" type="text/css" href="{% static 'css/register-login.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/articles.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/article.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/profile.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+     <script src="{% static 'js/sweetalert2-9.10.0/sweetalert2.all.min.js' %}"></script>
+    <link rel="stylesheet"  href="{% static 'js/jquery-confirm-v3.3.4/jquery-confirm.min.css' %}">
+    <script src="{% static 'js/jquery-confirm-v3.3.4/jquery-confirm.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/main.js' %}" type="text/javascript"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CH3675BCMJ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-CH3675BCMJ');
+    </script>
+</head>
+<body>
+  
+    <!--HEADER NAVBAR-->
+    <header>
+       <!-- Navbar -->
+<nav class="navbar navbar-expand-lg bg-navbar ">
+    <!-- Container wrapper -->
+    <div class="container" id="navnav">
+      <!-- Navbar brand -->
+      <a class="navbar-brand me-2 logo" href="{% url 'index' %}">
+        Dekche<span style="font-family: 'Baloo Chettan 2', cursive; color: #bba4a3; font-size: 1rem">Beta</span>
+       <!-- <img
+          src="{% static 'img/Logo.png' %}"
+          height="36"
+          alt=""
+          loading="lazy"
+          style="margin-top: -1px;"
+        />-->
+      </a>
+  
+      <!-- Toggle button -->
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span style="color:#a45350">
+          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+          </svg>
+      </span>
+      </button>
+  
+      <!-- Collapsible wrapper -->
+      <div class="collapse navbar-collapse responsive-nav" id="navbarSupportedContent">
+        <!-- Left links -->
+        <nav class="navbar responsive-nav-2">
+            <div style="width: 100%">
+              <form  action="{% url 'index' %}"class="d-flex form-search" method="get">
+                <input class="form-control me-2 bg-search" type="search" placeholder="Tendré suerte?..." aria-label="Search" name="buscar">
+                <button class="btn btn-outline-success primarycolor-button" id="search-btn" type="submit">Buscar</button>
+              </form>
+            </div>
+          </nav>
+        <!-- Left links -->
+        {% if user.email %}
+        <div class="d-flex align-items-center" id="sesion2">
+         
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle primarycolor-button" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+              @{{request.user.username}}
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+              <li>
+                <a href="{% url 'profile' user.username %}">
+                  <button type="button" class="dropdown-item">Perfil</button>
+                </a>
+              </li>
+              <li>
+                <a href="{% url 'favoritos' %}">
+                  <button class="dropdown-item" type="button">Favoritos</button>
+                </a>
+              </li>
+              <li>
+                <a href="{% url 'logout' %}">
+                  <button type="button" class="dropdown-item">Cerrar Sesión</button>
+                </a>
+              </li>  
+            </ul>
+          </div>
+        </div>
+        {% else %}
+        <div class="d-flex align-items-center responsive-nav-2" id="sesion">
+          <a href="{% url 'login' %}">
+            <button type="button" class="btn btn-link px-3 me-2 secondarycolor-button" id="login1">Inicia Sesión</button>
+          </a>
+          <a href="{% url 'register' %}">
+            <button type="button" class="btn btn-primary me-3 primarycolor-button" id="primarycolor-button-id">Regístrate</button>
+          </a> 
+        </div>
+        {% endif %}
+      </div>
+      <!-- Collapsible wrapper -->
+    </div>
+    <!-- Container wrapper -->
+  </nav>
+  <!-- Navbar -->
+    </header>
+  
+    <!--Categories section-->
+  <div class="nav-scroller py-1 mb-2  bg-categories">
+
+    <nav class="nav d-flex  container">
+    
+      <a href="{% url 'mujeres' %} " class="text-categories me-3" >Mujeres</a>
+      <a href="{% url 'hombres' %} " class="text-categories me-3" >Hombres</a>
+      <a href="{% url 'niños' %} " class="text-categories me-3" >Niños</a>
+      <a href="{% url 'unisex' %} " class="text-categories me-3" >Unisex</a>
+    </nav>
+  </div>
+  <abbr title="Publicar Articulo">
+  <a href="{% url 'crear' %}" class="publicar-btn d-flex justify-content-center align-items-center" >
+    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+      <path d="M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1z"/>
+    </svg>
+  </a></abbr>
+  
+
+  {% block content %}
+  
+  {% endblock content %}
+  
+  {% include 'footer.html' %}
+  
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $(window).on('scroll', function () { // Evento de Scroll
+        if(screen.width < 1024){
+          if ((window.pageYOffset  + $(window).height()) == $(document).height()) { // Si estamos al final de la página
+              $('.publicar-btn').stop(true).animate({ // Escondemos el div
+                  bottom: 400
+              }, 250);
+          } else { // Si no
+              $('.publicar-btn').stop(true).animate({ // Mostramos el div
+                  bottom: 30
+              }, 200);
+        }
+        }else{
+          if ((window.pageYOffset + $(window).height()) == $(document).height()) { // Si estamos al final de la página
+              $('.publicar-btn').stop(true).animate({ // Escondemos el div
+                  bottom: 150
+              }, 250);
+          } else { // Si no
+              $('.publicar-btn').stop(true).animate({ // Mostramos el div
+                  bottom: 30
+              }, 200);
+          }
+        }
+
+      });
+    });
+
+  </script>
+  
+</body>
+</html>

@@ -1,0 +1,94 @@
+/*Paleta de colores*/
+/*
+naranja pastel:     #b47545
+Rosado:             #e7d0ca
+Verde:              #767965
+Rojo pastel:        #a45350
+Rosadito Clarito:   #FFF4F1
+*/
+/*Parametros generales del footer*/
+footer{
+    width: 100%;
+    background-color: #a45350;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    box-shadow: 0px 0px 20px grey;
+    display: flex;
+    align-items: center;
+}
+/*Date & Social icons rigth*/  
+  #sideBar {
+    display: flex;
+    align-items: center;
+    flex-direction:column;
+    width: 250px;
+    
+}
+
+/*section of social icons*/
+.social-icons{
+    color: #FFF4F1 ;
+    padding-top: 15px;
+}
+
+/*social icons*/
+#social-footer{
+    display: flex;
+    width: 180px;
+    justify-content: space-between;
+    color: #FFF4F1 ;
+}
+
+/*left content like a menu*/
+  #content { 
+    width: 50%;
+    flex: 1 0 auto;
+    display: flex;
+    align-items: center;
+    /* habilitar crecer , deshabilitar encoger */
+  }
+
+  /*style of text*/
+.footer-text{    
+    margin: 10px;
+    text-decoration: none;
+    color: #FFF4F1;
+    font-family: 'Cabin', sans-serif;
+    font-size: 16px;
+    transition: 500ms;
+}
+
+/*estilos del logo del footer*/
+#footer-logo{
+    font-family: 'Pattaya', sans-serif;
+    font-size: 54px;
+}
+
+/*hover of the logo*/
+.footer-text:hover{
+    color: #767965;
+    cursor: pointer;
+    
+}
+
+
+
+
+@media screen and (max-width: 1024px){
+    /*footer responsive*/
+    footer{
+        flex-direction: column;
+    }
+    /*fix date*/
+    #sideBar{
+        flex-direction: column;
+        
+    }
+    #content{
+        flex-direction: column;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}

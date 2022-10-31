@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block content %}
+<div id="carouselExampleIndicators" class="carousel slide carousel-id" data-bs-ride="carousel">
+    
+    <div class="carousel-inner slider-img">
+      <div class="carousel-item active" style="background-image: url('static/img/slider1.jpg');">
+        
+        <div class="banner-text">
+          <h3 class="pb-3">Un giro a tu estilo, las mejores prendas al alcance de un click!</h3>
+          <a href="{% url 'crear' %}">
+            <button type="button" class="btn btn-primary me-3 primarycolor-button" id="primarycolor-button-id">Vender!</button>
+          </a>
+        </div>
+        <!--<img src="static/img/slider1.jpg" class="img-fix img-fluid" alt="image-slider1">-->
+      </div>
+      <!-- <div class="carousel-item " style="background-image: url('static/img/slider2.jpg');"> -->
+        
+        <!--<img src="static/img/slider2.jpg" class="img-fix img-fluid" alt="image-slider2">-->
+      </div>
+      <!-- <div class="carousel-item " style="background-image: url('static/img/slider3.jpg');"> -->
+        
+        <!--<img src="static/img/slider3.jpg" class="img-fix img-fluid" alt="image-slider3">-->
+      </div>
+    </div>
+    
+  </div>
+  {% include 'articles.html' %}
+{% endblock content %}

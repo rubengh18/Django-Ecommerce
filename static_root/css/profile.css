@@ -1,0 +1,131 @@
+/* ESTE CSS CONTENDRA TODO LO QUE TENGA QUE VER CON LA INTERACCION DIRECTA DEL 
+USUARIO CON LA PLATAFORMA */
+
+/* SECCION DE PERFIL */
+.profile-container{
+  min-height: calc(100vh - 202px);
+}
+
+.profile-box, .dato-box, .closet-box{
+  background-color: #fffaf9;
+  border-radius: 15px;  
+  box-shadow: 4px 4px 8px rgba(197, 189, 189, 0.5);;
+}
+
+.profile-box{
+  flex: 1 1 150px;
+  color: #a1a1a1;
+}
+
+.dato-box{
+  font-family: 'Cabin', sans-serif;
+  flex: 4 0 auto;
+}
+.profile-title-text{
+  color: #a45350;
+  font-family: 'Be Vietnam', sans-serif;
+  font-weight: bold;
+}
+.dato-text{
+  font-family:'Cabin', sans-serif;
+  color: #a1a1a1;
+  font-size: 1.2em;
+}
+
+.edit-icon{
+  color: #a45350;
+  cursor: pointer;
+}
+.text-edit{
+  color: #a45350;
+  font-family: 'Be Vietnam', sans-serif;
+  font-size: 1.2em;
+  cursor: pointer;
+ 
+}
+
+.ver-todo{
+  color: #a45350;
+  font-family: 'Cabin', sans-serif;
+  font-size: 1.3em;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 1024px) {
+  .profile-container{
+    height:auto;
+    max-height:auto;
+    
+  }
+}  
+
+/* SECCION DE AGREGAR ARTICULOS */
+.new-article{
+  width: 90%;
+  border-radius: 15px;
+  box-shadow: 4px 4px 8px rgba(197, 189, 189, 0.5);
+  background-color: #fffaf9;
+}
+
+.new-article > form{
+  width: 70%;
+
+
+}
+.new-image{
+  background-color: #fffaf9;
+  height: 200px;
+  border-radius: 15px;
+  border: .5px solid;
+  border-color: #bba4a3;
+  width: 100%;
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+  .new-image-container{
+    flex-direction: column;
+    height: 300px;
+  }
+}
+/* esta fragcion de codigo esconde le boton feo de subir archivos */
+.btn-file {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+.btn-file input[type=file] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  font-size: 100px;
+  text-align: right;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  outline: none;
+  background: white;
+  cursor: inherit;
+  display: block;
+}
+
+.form-label{
+  color: #a45350;
+  font-family: 'Pattaya', sans-serif;
+  font-size: 1.2em;
+}
+
+@media screen and (max-width: 1024px) {
+  .new-article{
+    width: 100%;
+  }
+
+  .new-article > form{
+    width: 90%;
+  }
+
+  .new-image{
+    height: 200px;
+  }
+}

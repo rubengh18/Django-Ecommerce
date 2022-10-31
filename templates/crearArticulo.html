@@ -1,0 +1,130 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block content %}
+<div id="contenedor_carga"><div id="carga"></div></div>
+<section class="p-3" id="empuje">
+    <div class="new-article p-xxl-3 p-xl-3 p-lg-3 mx-auto d-flex flex-column justify-content-center">
+        
+            <form class="mx-auto p-3" method="post" action="" enctype="multipart/form-data">
+                {% csrf_token %}
+                {% if form.errors %}
+                    {{form.errors}} 
+                {% endif %}
+                <h6 style="font-family: 'Baloo Chettan 2', cursive; text-align: center; color:#bba4a3; font-size: 2vh;">Escoja 3 Imagenes (Obligatorio 3 imagenes)</h6>
+                <div class="new-image-container d-flex justify-content-center">
+                    <div class="m-2 btn-file new-image d-flex align-items-center justify-content-center">
+                        <div style="border: .5px solid; border-radius: 5px; border-color: #bba4a3; color: #bba4a3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16" style="margin: 10px;">
+                                <path d="M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1z"/>
+                            </svg>
+                            <span class="ps-3" style="margin: 10px;">Subir Imagenes</span>
+                            <img id="upimage1" class="upimage" src="#" alt=""/>   
+                        </div>
+                        {{form.image}}
+                    </div>
+                    <div class="m-2 btn-file new-image d-flex align-items-center justify-content-center">
+                        <div style="border: .5px solid; border-radius: 5px; border-color: #bba4a3; color: #bba4a3 ">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16" style="margin: 10px;">
+                                <path d="M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1z"/>
+                            </svg>
+                            <span class="ps-3" style="margin: 10px;">Subir Imagenes</span>
+                            <img id="upimage2" class="upimage" src="#" alt=""/>
+                        </div>
+                        {{form.image2}}
+                    </div>
+                    <div class="m-2 btn-file new-image d-flex align-items-center justify-content-center">
+                        <div style="border: .5px solid; border-radius: 5px; border-color: #bba4a3; color: #bba4a3 ">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16" style="margin: 10px;">
+                                <path d="M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1z"/>
+                            </svg>
+                            <span class="ps-3" style="margin: 10px;">Subir Imagenes</span>
+                            <img id="upimage3" class="upimage" src="#" alt=""/>
+                        </div>
+                        {{form.image3}}
+                    </div>
+                </div>
+               
+                <label for="" class="form-label">Titulo</label>
+                <input name="titulo" type="text" placeholder="E.j. Camisa Tommy" class="form-control" id="">
+
+                <label for="" class="form-label">Sexo</label>
+                {{form.tipo}}
+                <datalist   id="inputGroupSelect01">
+                  <option selected>Escoja...</option>
+                  <option value="1">Mujer</option>
+                  <option value="2">Hombre</option>                      
+                  <option value="3">Niños</option>
+                  <option value="4">Unisex</option>
+                </datalist>
+
+                <label for="" class="form-label">Tipo de Prenda</label>
+                {{form.clase}}
+                <datalist  id="inputGroupSelect02">
+
+                  <option value="1">Superior</option>
+                  <option value="2">Inferior</option>                      
+                  <option value="3">Ropa Interior</option>
+                  <option value="4">Trajes de Baños</option>
+                  <option value="5">Accesorios</option>
+                </datalist>
+                
+                <label for="" class="form-label">Talla</label>
+                {{form.talla}}
+
+                <label for="" class="form-label">Categoria</label>
+                {{form.categories}}
+               
+                <!-- {{form.titulo.label}}
+                {{form.titulo}} -->
+                <p class="form-label">{{form.descripcion.label}}</p>
+                <p>{{form.descripcion}}</p>
+                
+                
+                <!--<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16">
+                    <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z"/>
+                </svg>
+                <span><input name="precio" inputmode="numeric" type="tel" placeholder="0.00" maxlength="5" class="form-control" id=""></span>-->
+                <p class="form-label">{{form.precio.label}}</p>
+                <input name="precio" type="number" class="form-control" onkeypress="return isNumberKey(event)">
+                <!-- {{form.clase.label}}
+                <p>{{form.clase}}3</p> -->
+                <!-- {{form.tipo.label}}
+                {{form.tipo}}  -->
+                <div class="mt-3    ">
+                    <input type="submit" class="mx-auto w-100 btn register-btn text-register" value="Publicar"/>
+                </div>
+            </form>
+       
+    </div>
+</section>
+<script type="text/javascript">
+    id_image.onchange = evt => {
+        const [file] = id_image.files
+        if (file) {
+            upimage1.src = URL.createObjectURL(file)
+        }
+}
+id_image2.onchange = evt => {
+        const [file] = id_image2.files
+        if (file) {
+            upimage2.src = URL.createObjectURL(file)
+        }
+}
+id_image3.onchange = evt => {
+        const [file] = id_image3.files
+        if (file) {
+            upimage3.src = URL.createObjectURL(file)
+        }
+}
+</script>
+<script type="text/javascript">
+	window.onload = function(){
+		var contenedor = document.getElementById('contenedor_carga');
+		contenedor.style.visibility = 'hidden';
+		contenedor.style.opacity = '0'; 
+	}
+
+</script>
+{% endblock content %}
+

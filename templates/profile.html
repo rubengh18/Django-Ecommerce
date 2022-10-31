@@ -1,0 +1,88 @@
+{% extends 'layout.html' %}
+{% block content %}
+<section class="profile-container  "id="empuje">
+    <div class="profile-container ">
+        <div class="d-xxl-flex d-xl-flex d-lg-flex w-100">
+       
+        <div class=" dato-box flex-column">
+            <div class="container">
+                <h2 class="profile-box-child profile-title-text">@{{usuario.username}}</h2>
+                <h3 class="profile-dato-text">Datos del Vendedor</h3>
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="edit-icon d-inline bi bi-person-fill" viewBox="0 0 16 16">
+                    <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                </svg>
+                <p class="d-inline dato-text">{{usuario.nombres}}{% if usuario.apellidos %} {{usuario.apellidos}} {% endif %}</p>
+                <p class=" dato-text">{{usuario.bio}}</p>
+            
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="edit-icon d-inline bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                    <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+                </svg>
+                <p class="d-inline dato-text">{{usuario.provincia}}</p>
+                <br>
+                {% if request.user == usuario %}
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="edit-icon d-inline bi bi-phone-fill" viewBox="0 0 16 16">
+                    <path d="M3 2a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V2zm6 11a1 1 0 1 0-2 0 1 1 0 0 0 2 0z"/>
+                </svg>
+                <p class="d-inline dato-text">{{usuario.phone_number}}</p>
+                <br>
+                
+                <div class="mt-1 d-xxl-flex d-xl-flex d-lg-flex align-items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="edit-icon d-inline bi bi-envelope-fill" viewBox="0 0 16 16">
+                        <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.104l5.803-3.558L0 4.697zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757zm3.436-.586L16 11.801V4.697l-5.803 3.546z"/>
+                    </svg>
+                    <p class="ps-2 d-inline dato-text" style="margin-bottom:0">{{usuario.email}}</p>
+                    {% endif %}
+                    {% if request.user == usuario %}
+                    <div class="mt-2 ms-auto align-items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="edit-icon bi bi-pencil-fill" viewBox="0 0 16 16">
+                            <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
+                        </svg> 
+                        
+                        
+                        <a href="{% url 'editarp' %}" class="text-edit text-decoration-underline">Editar Datos</a>
+                        
+                    </div> 
+                    {% endif %}
+                </div> 
+            </div>
+        </div>
+        </div>
+        
+        
+        <!--posts-->
+        <section id="home-articles">
+            <div class="container" id="articles1" >
+                <br>
+                <h1 id="section-title">Closet</h1>
+                <div class="row mx-auto">
+                    <!-- aqui empiezan los articulos -->
+                    {% if posts %}
+                    {% for article in posts %}
+                    <div class="d-flex p-3 col-xxl-3 col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6 a">
+                        <div >
+                            {% if article.image != null and article.image.url %}
+                            <img src="{{article.image.url|cut:"export=download"}}" class="img-article2" alt="...">
+                            {% else %}
+                            <img src="static/img/article-test.jpg" class="img-article2" alt="...">
+                            {% endif %}
+                            <span id="titulo1">{{article.titulo|truncatechars:18}}</span>
+                            <p id="precio">${{article.precio|floatformat:2}}</p>
+                            {% if request.user == usuario %}
+                            <a href="{% url 'editar' article.id %}" id="precio">Editar</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                   {% endfor %}
+                   {% else %}
+                   <p class="ps-2 d-inline dato-text">No hay artículos</p> 
+                   {% endif %}
+                   
+                </div>
+                <br>  
+            </div>
+            
+        </section>
+    </div>
+</section>
+
+{% endblock content %}
